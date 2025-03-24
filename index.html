@@ -1,9 +1,315 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <!-- بقیه تگ‌های head بدون تغییر -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهران تدوین | MehranTadvin</title>
+    <meta name="description" content="خدمات تخصصی فیلمبرداری، تدوین و تولید محتوای ویدیویی">
+    <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* استایل‌های قبلی بدون تغییر باقی می‌مانند */
+        /* تنظیمات پایه */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Yekan Bakh', sans-serif;
+        }
+        
+        body {
+            background-color: #000;
+            color: #fff;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* پالت رنگ */
+        :root {
+            --primary: #00c1d4;
+            --secondary: #ffffff;
+            --dark: #111;
+            --whatsapp: #25D366;
+            --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        /* هدر */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 1.5rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+            animation: fadeInDown 1s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* بخش اصلی */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://i.ibb.co/B5YfFX8x/photo1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* بخش درباره من */
+        .about {
+            padding: 5rem 2rem;
+            background-color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/ZDgvCd2/photo2.jpg') center/cover;
+            opacity: 0.3;
+            z-index: 0;
+        }
+        
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+        }
+        
+        /* بخش خدمات */
+        .services {
+            padding: 5rem 2rem;
+            background-color: #000;
+        }
+        
+        .service {
+            max-width: 1200px;
+            margin: 0 auto 4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .service-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,193,212,0.3);
+            height: 400px;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        
+        .service:hover .service-img img {
+            transform: scale(1.05);
+        }
+        
+        .service-content {
+            padding: 1rem;
+        }
+        
+        .service-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .service-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        /* بخش نمونه کارها */
+        .portfolio {
+            padding: 5rem 2rem;
+            background-color: var(--dark);
+        }
+        
+        /* بقیه استایل‌ها... */
+        
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .service {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-img {
+                height: 300px;
+                order: -1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <nav>
+            <div class="logo">مهران تدوین | MehranTadvin</div>
+        </nav>
+    </header>
+    
+    <!-- بخش اصلی -->
+    <main>
+        <!-- بخش هیرو -->
+        <section class="hero">
+            <h1>تخصص در فیلمبرداری و تدوین حرفه‌ای</h1>
+            <p>با سال‌ها تجربه در تولید محتوای ویدیویی باکیفیت</p>
+            <a href="#services" class="btn" style="margin-top: 2rem;">مشاهده خدمات</a>
+        </section>
+        
+        <!-- درباره من -->
+        <section class="about">
+            <div class="about-content">
+                <h2>سلام، من مهران بیات هستم</h2>
+                <p>
+                    فیلمبردار و ادیتور حرفه‌ای با بیش از ۸ سال تجربه در زمینه تولید محتوای ویدیویی. 
+                    تخصص من در فیلمبرداری مراسمات، تبلیغات تجاری و تولید محتوای دیجیتال است. 
+                    با استفاده از جدیدترین تجهیزات و نرم‌افزارهای روز دنیا، پروژه‌های شما را به بهترین شکل ممکن اجرا می‌کنم.
+                </p>
+            </div>
+        </section>
+        
+        <!-- خدمات: ادیت فیلم -->
+        <section class="services" id="services">
+            <div class="service">
+                <div class="service-img">
+                    <img src="https://i.ibb.co/ZDgvCd2/photo2.jpg" alt="ادیت فیلم">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">تدوین حرفه‌ای</h3>
+                    <p>
+                        ارائه خدمات تدوین ویدیو با نرم‌افزارهای Adobe Premiere Pro، After Effects و DaVinci Resolve.<br>
+                        تخصص در:
+                    </p>
+                    <ul style="text-align: right; margin: 1rem 0; padding-right: 1.5rem;">
+                        <li>رنگ‌گری حرفه‌ای (Color Grading)</li>
+                        <li>جلوه‌های ویژه بصری (VFX)</li>
+                        <li>مونتینگ سینمایی</li>
+                        <li>صداگذاری و میکس صدا</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- خدمات: فیلمبرداری -->
+            <div class="service">
+                <div class="service-content">
+                    <h3 class="service-title">فیلمبرداری حرفه‌ای</h3>
+                    <p>
+                        فیلمبرداری با کیفیت 4K و 6K با دوربین‌های سینمایی:<br>
+                        Sony FX6, Blackmagic URSA Mini Pro, RED Komodo
+                    </p>
+                    <ul style="text-align: right; margin: 1rem 0; padding-right: 1.5rem;">
+                        <li>فیلمبرداری مراسمات (عروسی، جشن‌ها)</li>
+                        <li>تولید محتوای تبلیغاتی</li>
+                        <li>مستندسازی</li>
+                        <li>فیلم‌های کوتاه</li>
+                    </ul>
+                </div>
+                <div class="service-img">
+                    <img src="https://i.ibb.co/B5YfFX8x/photo1.jpg" alt="فیلمبرداری">
+                </div>
+            </div>
+            
+            <!-- خدمات: هلی شات -->
+            <div class="service">
+                <div class="service-img">
+                    <img src="https://i.ibb.co/1YrRTThg/photo3.jpg" alt="هلی شات">
+                </div>
+                <div class="service-content">
+                    <h3 class="service-title">فیلمبرداری هوایی</h3>
+                    <p>
+                        تصویربرداری هوایی با پهپادهای DJI با کیفیت 6K<br>
+                        خدمات تخصصی:
+                    </p>
+                    <ul style="text-align: right; margin: 1rem 0; padding-right: 1.5rem;">
+                        <li>تصویربرداری از پروژه‌های ساختمانی</li>
+                        <li>فیلمبرداری مراسمات از بالا</li>
+                        <li>تصویربرداری طبیعت و مناظر</li>
+                        <li>فتوگرامتری و نقشه‌برداری</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <!-- بقیه بخش‌ها... -->
+        
+    </main>
+    
+    <!-- اسکریپت‌ها -->
+    <script>
+        // کدهای اسکریپت قبلی...
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مهران تدوین | MehranTadvin</title>
+    <meta name="description" content="خدمات تخصصی فیلمبرداری، تدوین و تولید محتوای ویدیویی">
+    <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* تمام استایل‌های قبلی بدون تغییر باقی می‌مانند */
         
         /* استایل‌های جدید برای فرم تماس */
         .contact {
