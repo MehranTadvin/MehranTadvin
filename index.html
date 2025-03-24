@@ -1,50 +1,56 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>مهران تدوین | MehranTadvin</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* تنظیمات پایه */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Noto Nastaliq Urdu', 'Orbitron', sans-serif;
+            font-family: 'Yekan Bakh', sans-serif;
         }
         
         body {
-            background-color: #000;
-            color: #fff;
+            background-color: #f8f9fa;
+            color: #333;
             line-height: 1.8;
+            overflow-x: hidden;
         }
         
-        /* هدر و نوار ناوبری */
+        /* پالت رنگ جدید */
+        :root {
+            --primary-color: #00c1d4; /* آبی فیروزه‌ای */
+            --secondary-color: #ffffff;
+            --text-color: #333333;
+            --light-bg: #f0f8ff;
+        }
+        
+        /* هدر */
         header {
-            background-color: #000;
+            background-color: var(--secondary-color);
             padding: 1.5rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid #ff7b00;
-            animation: fadeInDown 1s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
         .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #ff7b00;
-            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
         }
         
         /* بخش اصلی */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(135deg, var(--primary-color) 0%, #00a8c5 100%);
+            color: var(--secondary-color);
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -52,89 +58,89 @@
             align-items: center;
             text-align: center;
             padding: 0 1rem;
-            animation: fadeIn 2s ease;
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            color: #ff7b00;
-            text-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
-            font-family: 'Orbitron', sans-serif;
-            animation: pulse 2s infinite;
+            font-weight: 700;
         }
         
-        /* بخش درباره من */
-        .about {
+        /* بخش خدمات */
+        .services {
             padding: 5rem 2rem;
-            background-color: #111;
-            border-top: 1px solid #ff7b00;
-            border-bottom: 1px solid #ff7b00;
+            background-color: var(--secondary-color);
         }
         
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
             text-align: center;
-            animation: slideInUp 1s ease;
+            position: relative;
         }
         
-        .about h2 {
-            font-size: 2.5rem;
-            color: #ff7b00;
-            margin-bottom: 2rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        /* بخش نمونه کارها */
-        .portfolio {
-            padding: 5rem 2rem;
-            background-color: #000;
-            text-align: center;
-        }
-        
-        .portfolio h2 {
-            font-size: 2.5rem;
-            color: #ff7b00;
-            margin-bottom: 2rem;
-            font-family: 'Orbitron', sans-serif;
-        }
-        
-        .instagram-embed {
-            max-width: 540px;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
             margin: 0 auto;
-            background: #000;
-            padding: 20px;
-            border-radius: 12px;
-            border: 1px solid #ff7b00;
         }
         
-        .instagram-btn {
-            display: inline-block;
-            margin-top: 25px;
-            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
+        .service-card {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s;
         }
         
-        .instagram-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
+        .service-card:hover {
+            transform: translateY(-10px);
         }
         
-        /* فرم تماس ساده شده */
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* بخش تماس */
+        .contact {
+            padding: 5rem 2rem;
+            background-color: var(--light-bg);
+        }
+        
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .contact-form {
-            max-width: 500px;
-            margin: 3rem auto;
-            padding: 2rem;
-            background-color: #111;
-            border-radius: 10px;
-            border: 1px solid #ff7b00;
-            animation: fadeIn 1.5s ease;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
         }
         
         .form-group {
@@ -144,7 +150,8 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #ff7b00;
+            color: var(--primary-color);
+            font-weight: 500;
         }
         
         .form-group input,
@@ -152,30 +159,128 @@
         .form-group select {
             width: 100%;
             padding: 0.8rem;
-            background-color: #222;
-            border: 1px solid #ff7b00;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            color: #fff;
+            font-size: 1rem;
+            background-color: var(--secondary-color);
         }
         
         .btn {
-            background-color: #ff7b00;
-            color: #000;
-            padding: 0.8rem 2rem;
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 0.8rem 1.5rem;
             border: none;
             border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
             transition: all 0.3s;
-            display: block;
-            width: 100%;
-            font-family: 'Orbitron', sans-serif;
+            cursor: pointer;
+            font-weight: 500;
         }
         
         .btn:hover {
-            background-color: #ff9500;
+            background-color: #00a8c5;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+            box-shadow: 0 5px 15px rgba(0, 193, 212, 0.3);
+        }
+        
+        /* فوتر */
+        footer {
+            background-color: #333;
+            color: var(--secondary-color);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .social-links a.whatsapp {
+            background-color: #25D366;
+        }
+        
+        .social-links a.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* بخش نمونه کارها */
+        .portfolio {
+            padding: 5rem 2rem;
+            background-color: var(--secondary-color);
+        }
+        
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* دکمه شناور واتساپ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        
+        .whatsapp-float:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
         
         /* انیمیشن‌ها */
@@ -184,10 +289,10 @@
             to { opacity: 1; }
         }
         
-        @keyframes fadeInDown {
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -195,45 +300,15 @@
             }
         }
         
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
+        /* رسپانسیو */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            
+            .section-title {
+                font-size: 1.8rem;
             }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        /* فوتر */
-        footer {
-            background-color: #000;
-            padding: 2rem;
-            text-align: center;
-            border-top: 1px solid #ff7b00;
-        }
-        
-        .social-links {
-            margin-top: 1rem;
-        }
-        
-        .social-links a {
-            color: #ff7b00;
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: #fff;
-            transform: translateY(-5px);
         }
     </style>
 </head>
@@ -251,62 +326,82 @@
         <section class="hero">
             <h1>تخصص در فیلمبرداری و تدوین حرفه‌ای</h1>
             <p>با سال‌ها تجربه در تولید محتوای ویدیویی باکیفیت</p>
+            <a href="#contact" class="btn" style="margin-top: 2rem;">درخواست همکاری</a>
         </section>
         
-        <!-- درباره من -->
-        <section class="about">
-            <div class="about-content">
-                <h2>سلام، من مهران بیات هستم</h2>
-                <p>
-                    فیلمبردار و ادیتور حرفه‌ای با بیش از ۸ سال تجربه در زمینه تولید محتوای ویدیویی. 
-                    تخصص من در فیلمبرداری مراسمات، تبلیغات تجاری و تولید محتوای دیجیتال است. 
-                    با استفاده از جدیدترین تجهیزات و نرم‌افزارهای روز دنیا، پروژه‌های شما را به بهترین شکل ممکن اجرا می‌کنم.
-                </p>
+        <!-- بخش خدمات -->
+        <section class="services">
+            <h2 class="section-title">خدمات ما</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری">
+                    </div>
+                    <div class="service-content">
+                        <h3>فیلمبرداری حرفه‌ای</h3>
+                        <p>فیلمبرداری با کیفیت بالا برای مراسمات، تبلیغات و تولیدات سینمایی با استفاده از جدیدترین تجهیزات</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ادیت">
+                    </div>
+                    <div class="service-content">
+                        <h3>تدوین و پس‌تولید</h3>
+                        <p>ویرایش حرفه‌ای فیلم، رنگ‌آمیزی، جلوه‌های ویژه و صداگذاری برای خروجی با کیفیت</p>
+                    </div>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1564982753619-48c9d9f9ebfc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="پروژه‌های ویژه">
+                    </div>
+                    <div class="service-content">
+                        <h3>پروژه‌های ویژه</h3>
+                        <p>تولید محتوای اختصاصی برای شبکه‌های اجتماعی و پلتفرم‌های دیجیتال</p>
+                    </div>
+                </div>
             </div>
         </section>
         
-        <!-- نمونه کارها -->
+        <!-- بخش نمونه کارها -->
         <section class="portfolio">
-            <h2>نمونه کارهای من</h2>
-            
-            <div class="instagram-embed">
-                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHYBkdytUr2/?utm_source=ig_embed&utm_campaign=loading" 
-                data-instgrm-version="14" style="background:#000; border:none; border-radius:12px; margin:0 auto; width:100%;">
-                    <!-- محتوای embed به صورت خودکار توسط اینستاگرام بارگذاری می‌شود -->
-                </blockquote>
+            <h2 class="section-title">نمونه کارها</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 1">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 2">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 3">
+                </div>
             </div>
-
-            <a href="https://www.instagram.com/mehran_tadvin" target="_blank" class="instagram-btn">
-                <i class="fab fa-instagram"></i> مشاهده پیج اینستاگرام
-            </a>
         </section>
         
-        <!-- تماس با من -->
-        <section class="contact">
-            <div class="contact-form">
-                <h2 style="color: #ff7b00; text-align: center; margin-bottom: 1.5rem;">درخواست همکاری</h2>
-                <form>
+        <!-- بخش تماس -->
+        <section class="contact" id="contact">
+            <h2 class="section-title">تماس با ما</h2>
+            <div class="contact-container">
+                <form class="contact-form">
                     <div class="form-group">
-                        <label for="name">نام و نام خانوادگی</label>
+                        <label for="name">نام کامل</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="phone">شماره تماس</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="email">ایمیل</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="service">نوع پروژه</label>
-                        <select id="service" name="service">
-                            <option value="filming">فیلمبرداری</option>
-                            <option value="editing">تدوین</option>
-                            <option value="both">فیلمبرداری و تدوین</option>
-                            <option value="other">سایر</option>
-                        </select>
+                        <label for="message">پیام شما</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
                     
-                    <button type="submit" class="btn">ارسال درخواست</button>
+                    <button type="submit" class="btn">ارسال پیام</button>
                 </form>
             </div>
         </section>
@@ -314,13 +409,22 @@
     
     <!-- فوتر -->
     <footer>
-        <p>© 2023 MehranTadvin. تمامی حقوق محفوظ است.</p>
+        <p>استودیو مهران تدوین | ارائه دهنده خدمات تخصصی فیلمبرداری و تدوین</p>
         <div class="social-links">
-            <a href="https://www.instagram.com/mehran_tadvin" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
-            <a href="#"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://wa.me/989923681294" class="whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="https://www.instagram.com/mehran_tadvin" class="instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
         </div>
+        <p style="margin-top: 1.5rem;">© 2023 MehranTadvin. تمامی حقوق محفوظ است.</p>
     </footer>
+    
+    <!-- دکمه شناور واتساپ -->
+    <a href="https://wa.me/989923681294" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
     
     <!-- اسکریپت‌ها -->
     <script>
@@ -335,18 +439,29 @@
         });
         
         // فرم تماس
-        const contactForm = document.querySelector('.contact-form form');
+        const contactForm = document.querySelector('.contact-form');
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('درخواست شما ثبت شد. به زودی با شما تماس خواهم گرفت.');
+            alert('پیام شما با موفقیت ارسال شد. به زودی با شما تماس خواهیم گرفت.');
             this.reset();
         });
+        
+        // انیمیشن‌ها
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.service-card, .portfolio-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.animation = 'fadeInUp 0.8s forwards';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
     </script>
-    
-    <!-- اسکریپت رسمی اینستاگرام برای فعال شدن embed -->
-    <script async src="//www.instagram.com/embed.js"></script>
-    
-    <!-- آیکون‌های فونت آوسام -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 </html>
