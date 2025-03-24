@@ -3,45 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استودیو تدوین حرفه‌ای | مهران تدوین</title>
-    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین با کیفیت سینمایی">
+    <title>استودیو فیلمبرداری مراسم | مهران تدوین</title>
+    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین مراسمات با کیفیت سینمایی">
     <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* تنظیمات پایه */
+        :root {
+            --primary: #00c1d4;
+            --secondary: #ffffff;
+            --light-bg: #f5f9fa;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --card-bg: #ffffff;
+            --whatsapp: #25D366;
+            --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        /* حالت دارک */
+        .dark-mode {
+            --primary: #00a8c5;
+            --secondary: #1a1a1a;
+            --light-bg: #121212;
+            --text-dark: #f0f0f0;
+            --text-light: #b0b0b0;
+            --card-bg: #1e1e1e;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Yekan Bakh', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
         
         body {
-            background-color: #0a0a0a;
-            color: #fff;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
             line-height: 1.8;
             overflow-x: hidden;
         }
-        
-        /* پالت رنگ */
-        :root {
-            --primary: #00c1d4;
-            --secondary: #ffffff;
-            --dark: #111;
-            --whatsapp: #25D366;
-            --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-        
+
         /* هدر */
         header {
-            background-color: rgba(0, 0, 0, 0.9);
+            background-color: var(--secondary);
             padding: 1.2rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         
         .logo {
@@ -49,38 +63,47 @@
             font-weight: 700;
             color: var(--primary);
         }
-        
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
         /* بخش اصلی */
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0, 193, 212, 0.1), rgba(0, 193, 212, 0.1)), url('https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-1.jpg');
             background-size: cover;
             background-position: center;
-            height: 100vh;
+            height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 1rem;
+            margin-top: 80px;
         }
         
         .hero h1 {
             font-size: 2.8rem;
             margin-bottom: 1.2rem;
-            color: var(--primary);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            color: var(--text-dark);
         }
         
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 2rem;
+            color: var(--text-dark);
         }
         
         .btn {
             display: inline-block;
             background-color: var(--primary);
-            color: #000;
+            color: #fff;
             padding: 0.8rem 1.8rem;
             border-radius: 30px;
             text-decoration: none;
@@ -93,11 +116,11 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(0, 193, 212, 0.4);
         }
-        
-        /* بخش خدمات */
-        .services {
+
+        /* بخش نمونه کارها */
+        .portfolio {
             padding: 5rem 2rem;
-            background-color: #000;
+            background-color: var(--light-bg);
         }
         
         .section-title {
@@ -108,7 +131,7 @@
             position: relative;
         }
         
-        .services-grid {
+        .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
@@ -116,65 +139,19 @@
             margin: 0 auto;
         }
         
-        .service-card {
-            background: #111;
+        .portfolio-item {
+            position: relative;
+            height: 350px;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            background-color: var(--card-bg);
             transition: all 0.3s;
         }
         
-        .service-card:hover {
+        .portfolio-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,193,212,0.2);
-        }
-        
-        .service-img {
-            height: 220px;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        .service-content {
-            padding: 1.5rem;
-        }
-        
-        .service-content h3 {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-        
-        /* بخش نمونه کارها */
-        .portfolio {
-            padding: 5rem 2rem;
-            background-color: #111;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            height: 250px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .portfolio-img {
@@ -182,20 +159,21 @@
             height: 100%;
             object-fit: cover;
         }
-        
+
         /* بخش تماس */
         .contact {
             padding: 5rem 2rem;
-            background-color: #000;
+            background-color: var(--primary);
+            color: white;
         }
         
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
-            background: rgba(17, 17, 17, 0.8);
+            background: rgba(255, 255, 255, 0.1);
             padding: 2rem;
             border-radius: 15px;
-            border: 1px solid var(--primary);
+            backdrop-filter: blur(10px);
         }
         
         .contact-form {
@@ -211,7 +189,6 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: var(--primary);
             font-weight: 500;
         }
         
@@ -220,10 +197,10 @@
         .form-group select {
             width: 100%;
             padding: 0.8rem;
-            background: #222;
-            border: 1px solid #444;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 8px;
-            color: #fff;
+            color: white;
             font-size: 1rem;
         }
         
@@ -231,13 +208,13 @@
             min-height: 120px;
             resize: vertical;
         }
-        
+
         /* فوتر */
         footer {
-            background-color: #000;
+            background-color: var(--secondary);
             padding: 3rem 2rem;
             text-align: center;
-            border-top: 1px solid #333;
+            color: var(--text-dark);
         }
         
         .social-links {
@@ -271,7 +248,7 @@
         .social-links a:hover {
             transform: translateY(-5px);
         }
-        
+
         /* دکمه شناور واتساپ */
         .whatsapp-float {
             position: fixed;
@@ -294,18 +271,7 @@
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
-        
-        /* انیمیشن‌ها */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
+
         /* رسپانسیو */
         @media (max-width: 768px) {
             .hero h1 {
@@ -316,7 +282,7 @@
                 font-size: 1.8rem;
             }
             
-            .services-grid {
+            .portfolio-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -325,71 +291,42 @@
 <body>
     <!-- هدر -->
     <header>
-        <nav>
-            <div class="logo">مهران تدوین</div>
-        </nav>
+        <div class="logo">مهران تدوین</div>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
     </header>
     
     <!-- بخش اصلی -->
     <main>
         <!-- بخش هیرو -->
         <section class="hero">
-            <h1>خلق داستان‌های تصویری ماندگار</h1>
-            <p>تخصص ما در تولید محتوای ویدیویی با کیفیت سینمایی و تدوین خلاقانه</p>
+            <h1>فیلمبرداری و تدوین حرفه‌ای مراسمات</h1>
+            <p>ثبت خاطرات زیبای شما با کیفیت سینمایی و خلاقیت بی‌نظیر</p>
             <a href="#contact" class="btn">درخواست همکاری</a>
-        </section>
-        
-        <!-- بخش خدمات -->
-        <section class="services" id="services">
-            <h2 class="section-title">خدمات ما</h2>
-            <div class="services-grid">
-                <!-- خدمت 1: تدوین فیلم -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تدوین فیلم">
-                    </div>
-                    <div class="service-content">
-                        <h3>تدوین حرفه‌ای</h3>
-                        <p>ساخت روایت تصویری جذاب با تکنیک‌های پیشرفته تدوین، رنگ‌آمیزی حرفه‌ای و جلوه‌های ویژه</p>
-                    </div>
-                </div>
-                
-                <!-- خدمت 2: فیلمبرداری مراسم -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم">
-                    </div>
-                    <div class="service-content">
-                        <h3>فیلمبرداری مراسم</h3>
-                        <p>ثبت لحظات ناب و خاطره‌انگیز مراسمات با کیفیت سینمایی و زوایای دید خلاقانه</p>
-                    </div>
-                </div>
-                
-                <!-- خدمت 3: فیلمبرداری هوایی -->
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی">
-                    </div>
-                    <div class="service-content">
-                        <h3>فیلمبرداری هوایی</h3>
-                        <p>تصویربرداری از زوایای دید منحصر به فرد با تکنولوژی پیشرفته تصویربرداری هوایی</p>
-                    </div>
-                </div>
-            </div>
         </section>
         
         <!-- بخش نمونه کارها -->
         <section class="portfolio">
-            <h2 class="section-title">نمونه کارها</h2>
+            <h2 class="section-title">نمونه کارهای ما</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 1" class="portfolio-img">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-2.jpg" alt="فیلمبرداری مراسم عروسی" class="portfolio-img">
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 2" class="portfolio-img">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-3.jpg" alt="تدوین مراسم عروسی" class="portfolio-img">
                 </div>
                 <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="نمونه کار 3" class="portfolio-img">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-4.jpg" alt="کلیپ مراسم عروسی" class="portfolio-img">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-5.jpg" alt="فیلمبرداری هوایی مراسم" class="portfolio-img">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-6.jpg" alt="مستند مراسم عروسی" class="portfolio-img">
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://www.flashiran.net/wp-content/uploads/2023/05/wedding-videography-7.jpg" alt="تیزر مراسم عروسی" class="portfolio-img">
                 </div>
             </div>
         </section>
@@ -398,7 +335,7 @@
         <section class="contact" id="contact">
             <h2 class="section-title">تماس با ما</h2>
             <div class="contact-container">
-                <form class="contact-form" id="whatsappForm">
+                <form class="contact-form" id="contactForm">
                     <div class="form-group">
                         <label for="name">نام کامل</label>
                         <input type="text" id="name" name="name" required>
@@ -410,14 +347,14 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="service">نوع پروژه</label>
+                        <label for="service">نوع خدمات</label>
                         <select id="service" name="service" required>
                             <option value="" disabled selected>انتخاب کنید</option>
                             <option value="فیلمبرداری مراسم">فیلمبرداری مراسم</option>
                             <option value="تدوین فیلم">تدوین فیلم</option>
                             <option value="فیلمبرداری هوایی">فیلمبرداری هوایی</option>
-                            <option value="تولید محتوا">تولید محتوا</option>
-                            <option value="سایر">سایر</option>
+                            <option value="تولید کلیپ">تولید کلیپ</option>
+                            <option value="سایر خدمات">سایر خدمات</option>
                         </select>
                     </div>
                     
@@ -434,7 +371,7 @@
     
     <!-- فوتر -->
     <footer>
-        <p>استودیو تدوین حرفه‌ای مهران</p>
+        <p>استودیو فیلمبرداری و تدوین مهران</p>
         <div class="social-links">
             <a href="https://wa.me/989923681294" class="whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i>
@@ -451,96 +388,47 @@
         <i class="fab fa-whatsapp"></i>
     </a>
     
-    <!-- اسکریپت ارسال به واتساپ -->
+    <!-- اسکریپت‌ها -->
     <script>
-        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+        // تغییر تم
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if(body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+
+        // فرم تماس
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // دریافت اطلاعات فرم
             const name = document.getElementById('name').value;
             const phone = document.getElementById('phone').value;
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
             
-            // ساخت پیام
             let whatsappMsg = `درخواست جدید از سایت:\n\n`;
             whatsappMsg += `👤 نام: ${name}\n`;
             whatsappMsg += `📞 شماره: ${phone}\n`;
-            whatsappMsg += `🎬 پروژه: ${service}\n`;
+            whatsappMsg += `🎬 خدمات: ${service}\n`;
             
             if(message) {
                 whatsappMsg += `📝 توضیحات: ${message}\n`;
             }
             
-            // کدگذاری پیام برای URL
             const encodedMsg = encodeURIComponent(whatsappMsg);
-            
-            // لینک واتساپ
             const whatsappUrl = `https://wa.me/989923681294?text=${encodedMsg}`;
             
-            // باز کردن واتساپ
             window.open(whatsappUrl, '_blank');
-            
-            // ریست فرم
             this.reset();
-            
-            // پیام موفقیت
-            alert('پیام شما آماده ارسال است. لطفا در پنجره واتساپ ارسال را تأیید کنید.');
-
+            alert('پیام شما آماده ارسال است. لطفاً در پنجره واتساپ ارسال را تأیید کنید.');
         });
     </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <!-- بقیه تگ‌های head بدون تغییر -->
-    <style>
-        /* استایل‌های قبلی بدون تغییر باقی می‌مانند */
-    </style>
-</head>
-<body>
-    <!-- ... بقیه بخش‌ها ... -->
-
-    <!-- بخش خدمات -->
-    <section class="services" id="services">
-        <h2 class="section-title">خدمات ما</h2>
-        <div class="services-grid">
-            <!-- خدمت 1: تدوین فیلم -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تدوین فیلم">
-                </div>
-                <div class="service-content">
-                    <h3>تدوین حرفه‌ای</h3>
-                    <p>ساخت روایت تصویری جذاب با تکنیک‌های پیشرفته تدوین، رنگ‌آمیزی حرفه‌ای و جلوه‌های ویژه</p>
-                </div>
-            </div>
-            
-            <!-- خدمت 2: فیلمبرداری مراسم -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم">
-                </div>
-                <div class="service-content">
-                    <h3>فیلمبرداری مراسم</h3>
-                    <p>ثبت لحظات ناب و خاطره‌انگیز مراسمات با کیفیت سینمایی و زوایای دید خلاقانه</p>
-                </div>
-            </div>
-            
-            <!-- خدمت 3: فیلمبرداری هوایی (با عکس درخواستی شما) -->
-            <div class="service-card">
-                <div class="service-img">
-                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی">
-                </div>
-                <div class="service-content">
-                    <h3>فیلمبرداری هوایی</h3>
-                    <p>تصویربرداری از زوایای دید منحصر به فرد با تکنولوژی پیشرفته تصویربرداری هوایی</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ... بقیه بخش‌ها ... -->
 </body>
 </html>
