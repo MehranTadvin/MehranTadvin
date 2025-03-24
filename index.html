@@ -1,170 +1,24 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مهران تدوین | MehranTadvin</title>
-    <meta name="description" content="خدمات تخصصی فیلمبرداری، تدوین و تولید محتوای ویدیویی">
-    <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- بقیه تگ‌های head بدون تغییر -->
     <style>
-        /* تنظیمات پایه */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Yekan Bakh', sans-serif;
-        }
+        /* استایل‌های قبلی بدون تغییر باقی می‌مانند */
         
-        body {
-            background-color: #000;
-            color: #fff;
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-        
-        /* پالت رنگ */
-        :root {
-            --primary: #00c1d4;
-            --secondary: #ffffff;
-            --dark: #111;
-            --whatsapp: #25D366;
-            --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-        }
-        
-        /* هدر */
-        header {
-            background-color: var(--dark);
-            padding: 1.5rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-            animation: fadeInDown 1s ease;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-        
-        /* بخش اصلی */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #00a8c5 100%);
-            color: var(--secondary);
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 1rem;
-            margin-top: 80px;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* بخش درباره من */
-        .about {
-            padding: 5rem 2rem;
-            background-color: var(--dark);
-            border-top: 1px solid var(--primary);
-            border-bottom: 1px solid var(--primary);
-        }
-        
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .about h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 2rem;
-        }
-        
-        /* گالری نمونه کارها */
-        .portfolio {
-            padding: 5rem 2rem;
-            background-color: #000;
-        }
-        
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary);
-            position: relative;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            height: 350px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,193,212,0.2);
-            transition: all 0.5s ease;
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,193,212,0.4);
-        }
-        
-        .portfolio-item:hover .portfolio-img {
-            transform: scale(1.1);
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        /* بخش تماس */
+        /* استایل‌های جدید برای فرم تماس */
         .contact {
             padding: 5rem 2rem;
-            background-color: var(--dark);
+            background-color: #000;
         }
         
         .contact-container {
             max-width: 800px;
             margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0,193,212,0.3);
         }
         
         .contact-form {
@@ -182,350 +36,141 @@
             margin-bottom: 0.5rem;
             color: var(--primary);
             font-weight: 500;
+            font-size: 1.1rem;
         }
         
         .form-group input,
         .form-group textarea,
         .form-group select {
             width: 100%;
-            padding: 0.8rem;
+            padding: 0.8rem 1rem;
             border: 1px solid #444;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 1rem;
             background-color: #222;
             color: #fff;
+            transition: all 0.3s;
         }
         
-        .btn {
-            display: inline-block;
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 193, 212, 0.2);
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2300c1d4'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: left 15px center;
+            background-size: 1rem;
+            padding-right: 1.5rem;
+        }
+        
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
             background-color: var(--primary);
             color: #000;
-            padding: 0.8rem 1.5rem;
+            padding: 1rem;
             border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: all 0.3s;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
             cursor: pointer;
-            font-weight: 500;
+            transition: all 0.3s;
+            margin-top: 1rem;
         }
         
-        .btn:hover {
+        .btn-submit:hover {
             background-color: #00a8c5;
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 193, 212, 0.3);
-        }
-        
-        /* فوتر */
-        footer {
-            background-color: #111;
-            color: var(--secondary);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-links a {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .social-links a.whatsapp {
-            background-color: var(--whatsapp);
-        }
-        
-        .social-links a.instagram {
-            background: var(--instagram);
-        }
-        
-        .social-links a:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-        
-        /* دکمه شناور واتساپ */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background-color: var(--whatsapp);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            z-index: 100;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .whatsapp-float:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-        }
-        
-        /* انیمیشن‌ها */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .delay-1 { animation-delay: 0.5s; }
-        .delay-2 { animation-delay: 1s; }
-        .delay-3 { animation-delay: 1.5s; }
-        .delay-4 { animation-delay: 2s; }
-        
-        /* رسپانسیو */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
+            box-shadow: 0 5px 15px rgba(0, 193, 212, 0.4);
         }
     </style>
 </head>
 <body>
-    <!-- هدر -->
-    <header>
-        <nav>
-            <div class="logo">مهران تدوین | MehranTadvin</div>
-        </nav>
-    </header>
-    
-    <!-- بخش اصلی -->
-    <main>
-        <!-- بخش هیرو -->
-        <section class="hero">
-            <h1>تخصص در فیلمبرداری و تدوین حرفه‌ای</h1>
-            <p>با سال‌ها تجربه در تولید محتوای ویدیویی باکیفیت</p>
-            <a href="#contact" class="btn" style="margin-top: 2rem;">درخواست همکاری</a>
-        </section>
-        
-        <!-- درباره من -->
-        <section class="about">
-            <div class="about-content">
-                <h2>سلام، من مهران بیات هستم</h2>
-                <p>
-                    فیلمبردار و ادیتور حرفه‌ای با بیش از ۸ سال تجربه در زمینه تولید محتوای ویدیویی. 
-                    تخصص من در فیلمبرداری مراسمات، تبلیغات تجاری و تولید محتوای دیجیتال است. 
-                    با استفاده از جدیدترین تجهیزات و نرم‌افزارهای روز دنیا، پروژه‌های شما را به بهترین شکل ممکن اجرا می‌کنم.
-                </p>
-            </div>
-        </section>
-        
-        <!-- نمونه کارها -->
-        <section class="portfolio">
-            <h2 class="section-title">نمونه کارهای من</h2>
-            <div class="portfolio-grid">
-                <!-- تصویر 1 -->
-                <div class="portfolio-item floating">
-                    <img src="https://i.ibb.co/B5YfFX8x/photo1.jpg" alt="فیلمبرداری حرفه‌ای" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>فیلمبرداری مراسم</h3>
-                        <p>تصویربرداری با دوربین سینمایی Sony FX6</p>
-                    </div>
+    <!-- بقیه بخش‌های سایت بدون تغییر -->
+
+    <!-- بخش تماس با من -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">تماس با من</h2>
+        <div class="contact-container">
+            <form class="contact-form" id="whatsappForm">
+                <div class="form-group">
+                    <label for="name">نام کامل</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
                 
-                <!-- تصویر 2 -->
-                <div class="portfolio-item floating delay-1">
-                    <img src="https://i.ibb.co/ZDgvCd2/photo2.jpg" alt="تدوین ویدیو" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>تدوین حرفه‌ای</h3>
-                        <p>پروژه ادیت در Premiere Pro و After Effects</p>
-                    </div>
+                <div class="form-group">
+                    <label for="phone">شماره تماس</label>
+                    <input type="tel" id="phone" name="phone" required>
                 </div>
                 
-                <!-- تصویر 3 -->
-                <div class="portfolio-item floating delay-2">
-                    <img src="https://i.ibb.co/1YrRTThg/photo3.jpg" alt="هلی شات" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>فیلمبرداری هوایی</h3>
-                        <p>تصویربرداری با پهپاد DJI Mavic 3</p>
-                    </div>
+                <div class="form-group">
+                    <label for="service">نوع پروژه</label>
+                    <select id="service" name="service" required>
+                        <option value="" disabled selected>-- لطفا انتخاب کنید --</option>
+                        <option value="فیلمبرداری مراسم">فیلمبرداری مراسم</option>
+                        <option value="ادیت مراسم">ادیت مراسم</option>
+                        <option value="کلیپ">کلیپ</option>
+                        <option value="تیزر">تیزر</option>
+                        <option value="کلیپ اینستاگرامی">کلیپ اینستاگرامی</option>
+                        <option value="کلیپ رویدادها">کلیپ رویدادها</option>
+                        <option value="سایر خدمات">سایر خدمات</option>
+                    </select>
                 </div>
                 
-                <!-- تصویر 4 -->
-                <div class="portfolio-item floating delay-3">
-                    <img src="https://i.ibb.co/G4GBdwPh/photo4.jpg" alt="گیمبال" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>تصویربرداری متحرک</h3>
-                        <p>تثبیت حرفه‌ای با گیمبال Ronin RS3</p>
-                    </div>
+                <div class="form-group">
+                    <label for="message">توضیحات پروژه (اختیاری)</label>
+                    <textarea id="message" name="message"></textarea>
                 </div>
                 
-                <!-- تصویر 5 -->
-                <div class="portfolio-item floating delay-4">
-                    <img src="https://i.ibb.co/qF5ZRw4Z/photo5.jpg" alt="عکاسی حرفه‌ای" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3>عکاسی پرتره</h3>
-                        <p>نورپردازی سینمایی با تجهیزات حرفه‌ای</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- تماس با من -->
-        <section class="contact" id="contact">
-            <h2 class="section-title">تماس با من</h2>
-            <div class="contact-container">
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">نام کامل</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">شماره تماس</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">نوع پروژه</label>
-                        <select id="service" name="service">
-                            <option value="filming">فیلمبرداری</option>
-                            <option value="editing">تدوین</option>
-                            <option value="both">فیلمبرداری و تدوین</option>
-                            <option value="other">سایر</option>
-                        </select>
-                    </div>
-                    
-                    <button type="submit" class="btn">ارسال درخواست</button>
-                </form>
-            </div>
-        </section>
-    </main>
-    
-    <!-- فوتر -->
-    <footer>
-        <p>استودیو مهران تدوین | ارائه دهنده خدمات تخصصی فیلمبرداری و تدوین</p>
-        <div class="social-links">
-            <a href="https://wa.me/989923681294" class="whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://www.instagram.com/mehran_tadvin" class="instagram" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+                <button type="submit" class="btn-submit">ارسال درخواست</button>
+            </form>
         </div>
-        <p style="margin-top: 1.5rem;">© 2023 MehranTadvin. تمامی حقوق محفوظ است.</p>
-    </footer>
-    
-    <!-- دکمه شناور واتساپ -->
-    <a href="https://wa.me/989923681294" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-    
-    <!-- اسکریپت‌ها -->
+    </section>
+
+    <!-- اسکریپت اتصال به واتساپ -->
     <script>
-        // اسکرول نرم
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // فرم تماس
-        const contactForm = document.querySelector('.contact-form');
-        contactForm.addEventListener('submit', function(e) {
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('درخواست شما ثبت شد. به زودی با شما تماس خواهم گرفت.');
+            
+            // دریافت مقادیر فرم
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // ساخت پیام واتساپ
+            let whatsappMessage = `📌 *درخواست جدید از سایت*\n\n`;
+            whatsappMessage += `👤 *نام:* ${name}\n`;
+            whatsappMessage += `📞 *شماره تماس:* ${phone}\n`;
+            whatsappMessage += `🎬 *نوع پروژه:* ${service}\n`;
+            
+            if(message) {
+                whatsappMessage += `📝 *توضیحات:* ${message}\n`;
+            }
+            
+            // کد پیام برای URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // لینک واتساپ با شماره شما
+            const whatsappUrl = `https://wa.me/989923681294?text=${encodedMessage}`;
+            
+            // باز کردن واتساپ در پنجره جدید
+            window.open(whatsappUrl, '_blank');
+            
+            // ریست فرم
             this.reset();
-        });
-        
-        // انیمیشن‌های هنگام اسکرول
-        const animateOnScroll = () => {
-            const elements = document.querySelectorAll('.portfolio-item, .about-content, .contact-container');
-            const windowHeight = window.innerHeight;
             
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const animationPoint = 150;
-                
-                if(elementPosition < windowHeight - animationPoint) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
-        
-        // تنظیمات اولیه برای انیمیشن
-        document.querySelectorAll('.portfolio-item, .about-content, .contact-container').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'all 0.8s ease';
-        });
-        
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
-        
-        // لودر هوشمند برای عکس‌ها
-        document.addEventListener('DOMContentLoaded', function() {
-            const images = document.querySelectorAll('img');
-            
-            images.forEach(img => {
-                img.style.opacity = '0';
-                img.style.transition = 'opacity 1s ease';
-                
-                if(img.complete) {
-                    img.style.opacity = '1';
-                } else {
-                    img.addEventListener('load', function() {
-                        this.style.opacity = '1';
-                    });
-                }
-            });
+            // پیام موفقیت
+            alert('پیام شما آماده ارسال به واتساپ است. لطفاً در پنجره باز شده ارسال را تأیید کنید.');
         });
     </script>
 </body>
