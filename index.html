@@ -1,507 +1,312 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>استودیو فیلمبرداری و ادیت حرفه‌ای</title>
+    <title>مهران تدوین | MehranTadvin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset و فونت‌ها */
+        /* تنظیمات پایه */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Noto Nastaliq Urdu', 'Orbitron', sans-serif;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            line-height: 1.6;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.8;
         }
         
-        /* نوار导航 */
+        /* هدر و نوار ناوبری */
         header {
-            background-color: #222;
-            color: white;
-            padding: 1rem 2rem;
+            background-color: #000;
+            padding: 1.5rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            border-bottom: 2px solid #ff7b00;
+            animation: fadeInDown 1s ease;
         }
         
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
-            color: #ff6b6b;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-links li {
-            margin-left: 2rem;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #ff6b6b;
+            color: #ff7b00;
+            font-family: 'Orbitron', sans-serif;
         }
         
         /* بخش اصلی */
-        main {
-            margin-top: 80px;
-            padding: 2rem;
-        }
-        
         .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://example.com/hero-bg.jpg');
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: white;
             padding: 0 1rem;
+            animation: fadeIn 2s ease;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #ff7b00;
+            text-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            animation: pulse 2s infinite;
         }
         
-        .hero p {
-            font-size: 1.2rem;
+        /* بخش درباره من */
+        .about {
+            padding: 5rem 2rem;
+            background-color: #111;
+            border-top: 1px solid #ff7b00;
+            border-bottom: 1px solid #ff7b00;
+        }
+        
+        .about-content {
             max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            animation: slideInUp 1s ease;
+        }
+        
+        .about h2 {
+            font-size: 2.5rem;
+            color: #ff7b00;
             margin-bottom: 2rem;
+            font-family: 'Orbitron', sans-serif;
         }
         
-        .btn {
-            display: inline-block;
-            background-color: #ff6b6b;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: background-color 0.3s;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            background-color: #ff5252;
-        }
-        
-        /* بخش خدمات */
-        .services {
-            padding: 4rem 0;
+        /* بخش نمونه کارها */
+        .portfolio {
+            padding: 5rem 2rem;
+            background-color: #000;
             text-align: center;
         }
         
-        .section-title {
+        .portfolio h2 {
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #222;
-            position: relative;
+            color: #ff7b00;
+            margin-bottom: 2rem;
+            font-family: 'Orbitron', sans-serif;
         }
         
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background-color: #ff6b6b;
-            margin: 1rem auto;
+        .instagram-embed {
+            max-width: 540px;
+            margin: 0 auto;
+            background: #000;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #ff7b00;
         }
         
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 0 2rem;
-        }
-        
-        .service-card {
-            background-color: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        .instagram-btn {
+            display: inline-block;
+            margin-top: 25px;
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
             transition: transform 0.3s;
         }
         
-        .service-card:hover {
-            transform: translateY(-10px);
+        .instagram-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.4);
         }
         
-        .service-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .service-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .service-card:hover .service-img img {
-            transform: scale(1.1);
-        }
-        
-        .service-content {
-            padding: 1.5rem;
-        }
-        
-        .service-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #222;
-        }
-        
-        /* نمونه کارها */
-        .portfolio {
-            padding: 4rem 0;
-            background-color: #f0f0f0;
-        }
-        
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            padding: 0 2rem;
-        }
-        
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            height: 250px;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* فرم تماس */
-        .contact {
-            padding: 4rem 0;
-        }
-        
-        .contact-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
+        /* فرم تماس ساده شده */
         .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
+            max-width: 500px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background-color: #111;
+            border-radius: 10px;
+            border: 1px solid #ff7b00;
+            animation: fadeIn 1.5s ease;
         }
         
         .form-group {
             margin-bottom: 1.5rem;
         }
         
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-        
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: bold;
+            color: #ff7b00;
         }
         
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 0.8rem;
-            border: 1px solid #ddd;
+            background-color: #222;
+            border: 1px solid #ff7b00;
             border-radius: 5px;
-            font-size: 1rem;
+            color: #fff;
         }
         
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+        .btn {
+            background-color: #ff7b00;
+            color: #000;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            width: 100%;
+            font-family: 'Orbitron', sans-serif;
+        }
+        
+        .btn:hover {
+            background-color: #ff9500;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 123, 0, 0.4);
+        }
+        
+        /* انیمیشن‌ها */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
         
         /* فوتر */
         footer {
-            background-color: #222;
-            color: white;
-            padding: 3rem 2rem;
+            background-color: #000;
+            padding: 2rem;
             text-align: center;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: right;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            color: #ff6b6b;
-        }
-        
-        .footer-column p, 
-        .footer-column a {
-            color: #ddd;
-            margin-bottom: 1rem;
-            display: block;
-            text-decoration: none;
-        }
-        
-        .footer-column a:hover {
-            color: #ff6b6b;
+            border-top: 1px solid #ff7b00;
         }
         
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
             margin-top: 1rem;
         }
         
         .social-links a {
-            color: white;
+            color: #ff7b00;
             font-size: 1.5rem;
-            transition: color 0.3s;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
         }
         
         .social-links a:hover {
-            color: #ff6b6b;
-        }
-        
-        .copyright {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid #444;
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        /* رسپانسیو */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .contact-form {
-                grid-template-columns: 1fr;
-            }
+            color: #fff;
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body>
-    <!-- هدر و منو -->
+    <!-- هدر -->
     <header>
         <nav>
-            <div class="logo">استودیو هنر تصویر</div>
-            <ul class="nav-links">
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#services">خدمات</a></li>
-                <li><a href="#portfolio">نمونه کارها</a></li>
-                <li><a href="#about">درباره ما</a></li>
-                <li><a href="#contact">تماس</a></li>
-            </ul>
+            <div class="logo">مهران تدوین | MehranTadvin</div>
         </nav>
     </header>
     
-    <!-- محتوای اصلی -->
+    <!-- بخش اصلی -->
     <main>
         <!-- بخش هیرو -->
-        <section class="hero" id="home">
-            <h1>خلق داستان‌های تصویری ماندگار</h1>
-            <p>تخصص ما در فیلمبرداری حرفه‌ای و ادیت خلاقانه به شما کمک می‌کند تا لحظات خاص را به بهترین شکل ثبت و ارائه کنید.</p>
-            <a href="#contact" class="btn">درخواست همکاری</a>
+        <section class="hero">
+            <h1>تخصص در فیلمبرداری و تدوین حرفه‌ای</h1>
+            <p>با سال‌ها تجربه در تولید محتوای ویدیویی باکیفیت</p>
         </section>
         
-        <!-- بخش خدمات -->
-        <section class="services" id="services">
-            <h2 class="section-title">خدمات ما</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://example.com/filming.jpg" alt="فیلمبرداری">
-                    </div>
-                    <div class="service-content">
-                        <h3>فیلمبرداری حرفه‌ای</h3>
-                        <p>فیلمبرداری با کیفیت بالا برای مراسمات، تبلیغات، مستندها و تولیدات سینمایی با استفاده از جدیدترین تجهیزات</p>
-                        <a href="#" class="btn">اطلاعات بیشتر</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://example.com/editing.jpg" alt="ادیت">
-                    </div>
-                    <div class="service-content">
-                        <h3>ادیت و پس‌تولید</h3>
-                        <p>ویرایش حرفه‌ای فیلم، رنگ‌آمیزی، جلوه‌های ویژه، موشن گرافیک و صداگذاری برای خروجی با کیفیت</p>
-                        <a href="#" class="btn">اطلاعات بیشتر</a>
-                    </div>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-img">
-                        <img src="https://example.com/drone.jpg" alt="فیلمبرداری هوایی">
-                    </div>
-                    <div class="service-content">
-                        <h3>فیلمبرداری هوایی</h3>
-                        <p>تصویربرداری با پهپاد از مناظر، ساختمان‌ها، مراسم و رویدادها با کیفیت 4K و زوایای دید منحصر به فرد</p>
-                        <a href="#" class="btn">اطلاعات بیشتر</a>
-                    </div>
-                </div>
+        <!-- درباره من -->
+        <section class="about">
+            <div class="about-content">
+                <h2>سلام، من مهران بیات هستم</h2>
+                <p>
+                    فیلمبردار و ادیتور حرفه‌ای با بیش از ۸ سال تجربه در زمینه تولید محتوای ویدیویی. 
+                    تخصص من در فیلمبرداری مراسمات، تبلیغات تجاری و تولید محتوای دیجیتال است. 
+                    با استفاده از جدیدترین تجهیزات و نرم‌افزارهای روز دنیا، پروژه‌های شما را به بهترین شکل ممکن اجرا می‌کنم.
+                </p>
             </div>
         </section>
         
         <!-- نمونه کارها -->
-        <section class="portfolio" id="portfolio">
-            <h2 class="section-title">نمونه کارهای ما</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="https://example.com/portfolio1.jpg" alt="نمونه کار 1">
-                    <div class="portfolio-overlay">
-                        <h3>تبلیغات تجاری</h3>
-                        <p>فیلمبرداری و ادیت تبلیغات یک برند معتبر</p>
-                        <a href="#" class="btn">مشاهده پروژه</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="https://example.com/portfolio2.jpg" alt="نمونه کار 2">
-                    <div class="portfolio-overlay">
-                        <h3>مراسم عروسی</h3>
-                        <p>فیلمبرداری و ادیت مراسم عروسی</p>
-                        <a href="#" class="btn">مشاهده پروژه</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="https://example.com/portfolio3.jpg" alt="نمونه کار 3">
-                    <div class="portfolio-overlay">
-                        <h3>مستند طبیعت</h3>
-                        <p>تولید مستند طبیعت با فیلمبرداری هوایی</p>
-                        <a href="#" class="btn">مشاهده پروژه</a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <img src="https://example.com/portfolio4.jpg" alt="نمونه کار 4">
-                    <div class="portfolio-overlay">
-                        <h3>موزیک ویدیو</h3>
-                        <p>تولید موزیک ویدیو با جلوه‌های ویژه</p>
-                        <a href="#" class="btn">مشاهده پروژه</a>
-                    </div>
-                </div>
+        <section class="portfolio">
+            <h2>نمونه کارهای من</h2>
+            
+            <div class="instagram-embed">
+                <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHYBkdytUr2/?utm_source=ig_embed&utm_campaign=loading" 
+                data-instgrm-version="14" style="background:#000; border:none; border-radius:12px; margin:0 auto; width:100%;">
+                    <!-- محتوای embed به صورت خودکار توسط اینستاگرام بارگذاری می‌شود -->
+                </blockquote>
             </div>
+
+            <a href="https://www.instagram.com/mehran_tadvin" target="_blank" class="instagram-btn">
+                <i class="fab fa-instagram"></i> مشاهده پیج اینستاگرام
+            </a>
         </section>
         
-        <!-- درباره ما -->
-        <section class="about" id="about">
-            <div class="about-container">
-                <h2 class="section-title">درباره استودیو ما</h2>
-                <p>استودیو هنر تصویر با بیش از 10 سال تجربه در زمینه فیلمبرداری و ادیت، تیمی متشکل از متخصصان خلاق و با تجربه است که آماده ارائه خدمات با کیفیت به شما عزیزان می‌باشد. ما با استفاده از جدیدترین تجهیزات و نرم‌افزارهای روز دنیا، پروژه‌های شما را به بهترین شکل ممکن اجرا می‌کنیم.</p>
-                <p>اعتقاد ما این است که هر پروژه داستان منحصر به فرد خود را دارد و ما اینجا هستیم تا این داستان‌ها را به زیباترین شکل ممکن روایت کنیم.</p>
-            </div>
-        </section>
-        
-        <!-- تماس با ما -->
-        <section class="contact" id="contact">
-            <h2 class="section-title">تماس با ما</h2>
-            <div class="contact-container">
-                <form class="contact-form">
+        <!-- تماس با من -->
+        <section class="contact">
+            <div class="contact-form">
+                <h2 style="color: #ff7b00; text-align: center; margin-bottom: 1.5rem;">درخواست همکاری</h2>
+                <form>
                     <div class="form-group">
-                        <label for="name">نام کامل</label>
+                        <label for="name">نام و نام خانوادگی</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">ایمیل</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
                         <label for="phone">شماره تماس</label>
-                        <input type="tel" id="phone" name="phone">
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="service">نوع خدمات</label>
+                        <label for="service">نوع پروژه</label>
                         <select id="service" name="service">
                             <option value="filming">فیلمبرداری</option>
-                            <option value="editing">ادیت و پس‌تولید</option>
-                            <option value="drone">فیلمبرداری هوایی</option>
-                            <option value="full">پکیج کامل</option>
+                            <option value="editing">تدوین</option>
+                            <option value="both">فیلمبرداری و تدوین</option>
+                            <option value="other">سایر</option>
                         </select>
                     </div>
                     
-                    <div class="form-group full-width">
-                        <label for="message">پیام شما</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <div class="form-group full-width">
-                        <button type="submit" class="btn">ارسال درخواست</button>
-                    </div>
+                    <button type="submit" class="btn">ارسال درخواست</button>
                 </form>
             </div>
         </section>
@@ -509,49 +314,20 @@
     
     <!-- فوتر -->
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>درباره ما</h3>
-                <p>استودیو هنر تصویر ارائه دهنده خدمات حرفه‌ای فیلمبرداری و ادیت با کیفیت بالا و قیمت مناسب</p>
-            </div>
-            
-            <div class="footer-column">
-                <h3>لینک‌های مفید</h3>
-                <a href="#home">خانه</a>
-                <a href="#services">خدمات</a>
-                <a href="#portfolio">نمونه کارها</a>
-                <a href="#about">درباره ما</a>
-                <a href="#contact">تماس</a>
-            </div>
-            
-            <div class="footer-column">
-                <h3>تماس با ما</h3>
-                <p>تهران، خیابان ولیعصر، پلاک 1234</p>
-                <p>تلفن: 021-12345678</p>
-                <p>موبایل: 09123456789</p>
-                <p>ایمیل: info@artimage-studio.com</p>
-                
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>تمامی حقوق برای استودیو هنر تصویر محفوظ است. © 2023</p>
+        <p>© 2023 MehranTadvin. تمامی حقوق محفوظ است.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/mehran_tadvin" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-whatsapp"></i></a>
         </div>
     </footer>
     
     <!-- اسکریپت‌ها -->
     <script>
-        // اسکرول نرم برای لینک‌های منو
+        // اسکرول نرم
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
@@ -559,35 +335,16 @@
         });
         
         // فرم تماس
-        const contactForm = document.querySelector('.contact-form');
+        const contactForm = document.querySelector('.contact-form form');
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            // در اینجا می‌توانید کد ارسال فرم به سرور را اضافه کنید
-            alert('درخواست شما با موفقیت ثبت شد. به زودی با شما تماس خواهیم گرفت.');
+            alert('درخواست شما ثبت شد. به زودی با شما تماس خواهم گرفت.');
             this.reset();
         });
-        
-        // افکت اسکرول برای ظاهر شدن عناصر
-        window.addEventListener('scroll', revealOnScroll);
-        
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.service-card, .portfolio-item, .about-container');
-            
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const revealTop = reveals[i].getBoundingClientRect().top;
-                const revealPoint = 150;
-                
-                if (revealTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('active');
-                }
-            }
-        }
-        
-        // فراخوانی اولیه برای عناصری که در viewport هستند
-        revealOnScroll();
     </script>
+    
+    <!-- اسکریپت رسمی اینستاگرام برای فعال شدن embed -->
+    <script async src="//www.instagram.com/embed.js"></script>
     
     <!-- آیکون‌های فونت آوسام -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
