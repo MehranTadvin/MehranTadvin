@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استودیو فیلمبرداری مراسم | مهران تدوین</title>
-    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین مراسمات با کیفیت سینمایی">
+    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین مراسمات با کیفیت سینمایی و هوش مصنوعی">
     <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <style>
         :root {
             --primary: #00c1d4;
@@ -17,6 +18,7 @@
             --card-bg: #ffffff;
             --whatsapp: #25D366;
             --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            --ai-color: #6e48aa;
         }
 
         /* حالت دارک */
@@ -62,6 +64,13 @@
             font-size: 1.8rem;
             font-weight: 700;
             color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-left: 0.5rem;
+            font-size: 1.5rem;
         }
 
         .theme-toggle {
@@ -72,119 +81,821 @@
             cursor: pointer;
         }
 
+        /* منوی ناوبری */
+        nav {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
         /* بخش اصلی */
         .hero {
-            background: linear-gradient(rgba(0, 193, 212, 0.1), rgba(0, 193, 212, 0.1)), url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 1rem;
-            margin-top: 80px;
+            color: white;
         }
         
         .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
-            color: var(--text-dark);
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+            animation: fadeInDown 1.5s;
         }
         
         .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 2rem;
-            color: var(--text-dark);
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.5s;
         }
         
         .btn {
             display: inline-block;
             background-color: var(--primary);
             color: #fff;
-            padding: 0.8rem 1.8rem;
+            padding: 1rem 2.5rem;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 700;
             transition: all 0.3s;
-            margin-top: 1rem;
+            margin: 0.5rem;
+            font-size: 1.1rem;
+            animation: fadeIn 2s;
         }
         
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 193, 212, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 193, 212, 0.4);
+        }
+        
+        .btn-ai {
+            background: var(--ai-color);
+            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
+        }
+        
+        .btn-ai:hover {
+            box-shadow: 0 10px 25px rgba(110, 72, 170, 0.6);
         }
 
         /* بخش نمونه کارها */
         .portfolio {
-            padding: 5rem 2rem;
+            padding: 6rem 2rem;
             background-color: var(--light-bg);
         }
         
         .section-title {
             text-align: center;
-            font-size: 2.3rem;
-            margin-bottom: 3rem;
+            font-size: 2.8rem;
+            margin-bottom: 4rem;
             color: var(--primary);
             position: relative;
+            animation: fadeIn 1s;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--primary);
+            margin: 1rem auto;
+            border-radius: 2px;
         }
         
         .portfolio-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
         
         .portfolio-item {
             position: relative;
-            height: 350px;
-            border-radius: 15px;
+            height: 400px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             background-color: var(--card-bg);
-            transition: all 0.3s;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s;
         }
         
         .portfolio-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,193,212,0.2);
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,193,212,0.3);
         }
         
         .portfolio-img {
             width: 100%;
             height: 70%;
             object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
         }
         
         .portfolio-content {
-            padding: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            z-index: 2;
+            background: var(--card-bg);
         }
         
         .portfolio-content h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
             color: var(--primary);
         }
         
         .portfolio-content p {
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tag {
+            background: rgba(0, 193, 212, 0.1);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* گالری تصاویر */
+        .gallery {
+            padding: 6rem 2rem;
+            background-color: var(--secondary);
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .gallery-item {
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+        
+        .gallery-item:hover .gallery-img {
+            transform: scale(1.1);
         }
 
         /* بخش خدمات */
         .services {
-            padding: 5rem 2rem;
-            background-color: var(--secondary);
+            padding: 6rem 2rem;
+            background-color: var(--light-bg);
         }
         
         .services-grid {
             display: grid;
-            grid-template
-		ای با چندین دوربین و زوایای مختلف برای پوشش کامل مراسم</p>
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 1s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0,193,212,0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover .service-icon {
+            transform: scale(1.2);
+        }
+        
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-card p {
+            color: var(--text-light);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* بخش هوش مصنوعی */
+        .ai-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+        }
+        
+        .ai-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .ai-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .ai-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        
+        .ai-features {
+            margin-top: 2rem;
+        }
+        
+        .ai-feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .ai-feature i {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-left: 1rem;
+            margin-top: 0.3rem;
+        }
+        
+        .ai-demo {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .ai-demo img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* بخش ربات نوبت دهی */
+        .booking {
+            padding: 6rem 2rem;
+            background-color: var(--secondary);
+        }
+        
+        .booking-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .booking-image {
+            background: url('https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        }
+        
+        .booking-form {
+            padding: 3rem;
+        }
+        
+        .booking-form h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: var(--light-bg);
+            color: var(--text-dark);
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .booking-bot {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(0, 193, 212, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .bot-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .bot-icon i {
+            font-size: 1.8rem;
+            color: white;
+        }
+        
+        .bot-message {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* بخش درباره من */
+        .about {
+            padding: 6rem 2rem;
+            background-color: var(--light-bg);
+        }
+        
+        .about-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+            animation: fadeInLeft 1s;
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            animation: fadeInRight 1s;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .instagram {
+            background: var(--instagram);
+        }
+        
+        .whatsapp {
+            background: var(--whatsapp);
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* فوتر */
+        footer {
+            background-color: var(--secondary);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+            color: var(--text-dark);
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .footer-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .copyright {
+            margin-top: 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* دکمه شناور واتساپ */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 70px;
+            height: 70px;
+            background-color: var(--whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 100;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        /* انیمیشن‌های سفارشی */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* رسپانسیو */
+        @media (max-width: 1200px) {
+            .ai-container,
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .ai-demo,
+            .about-img {
+                order: -1;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .booking-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .booking-image {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            nav {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1rem;
+            }
+            
+            .portfolio-item,
+            .service-card {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- هدر -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-video"></i>
+            مهران تدوین
+        </div>
+        <nav>
+            <a href="#portfolio">نمونه کارها</a>
+            <a href="#services">خدمات</a>
+            <a href="#ai">هوش مصنوعی</a>
+            <a href="#booking">نوبت دهی</a>
+            <a href="#about">درباره من</a>
+        </nav>
+        <button class="theme-toggle" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+    </header>
+    
+    <!-- بخش اصلی -->
+    <main>
+        <!-- بخش هیرو -->
+        <section class="hero">
+            <h1>استودیو حرفه‌ای فیلمبرداری و تدوین</h1>
+            <p>ثبت خاطرات به یاد ماندنی با تکنولوژی روز و خلاقیت بی‌نظیر</p>
+            <div>
+                <a href="#booking" class="btn">رزرو آنلاین</a>
+                <a href="#ai" class="btn btn-ai">پیش نمایش هوش مصنوعی</a>
+            </div>
+        </section>
+        
+        <!-- بخش نمونه کارها -->
+        <section class="portfolio" id="portfolio">
+            <h2 class="section-title">گالری آثار</h2>
+            <div class="portfolio-grid">
+                <!-- فیلمبرداری مراسم -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم عروسی" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>فیلمبرداری مراسم عروسی</h3>
+                        <p>ثبت لحظات ناب مراسم شما با چندین دوربین حرفه‌ای و زوایای دید خلاقانه</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">4K</span>
+                            <span class="tag">Slow Motion</span>
+                            <span class="tag">Cinematic</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- هلی شات -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>فیلمبرداری هوایی (هلی شات)</h3>
+                        <p>نمای هوایی خیره‌کننده از مراسم شما با پهپادهای DJI Inspire و Mavic 3</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Aerial</span>
+                            <span class="tag">Drone</span>
+                            <span class="tag">360°</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ادیت فیلم -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551269901-5c5e14c25df7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تدوین فیلم" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>تدوین حرفه‌ای فیلم</h3>
+                        <p>تبدیل فیلم‌های خام به یک اثر هنری با نرم‌افزارهای Premiere Pro و DaVinci Resolve</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Color Grading</span>
+                            <span class="tag">Motion Graphics</span>
+                            <span class="tag">Sound Design</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- تیزر -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تیزر مراسم" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>تیزر مراسم</h3>
+                        <p>تهیه تیزرهای جذاب برای معرفی مراسم شما در فضای مجازی</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Teaser</span>
+                            <span class="tag">Social Media</span>
+                            <span class="tag">Short Clip</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- فیلمبرداری مراسم دوم -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>فیلمبرداری مراسم</h3>
+                        <p>ثبت تمام لحظات مهم و احساسی مراسم شما با دقت و حساسیت</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Multi Camera</span>
+                            <span class="tag">Event</span>
+                            <span class="tag">Documentary</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- هلی شات دوم -->
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی" class="portfolio-img">
+                    <div class="portfolio-content">
+                        <h3>هلی شات خلاقانه</h3>
+                        <p>نمایش زیبایی‌های مراسم شما از زوایای دید منحصر به فرد</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">FPV Drone</span>
+                            <span class="tag">Follow Shot</span>
+                            <span class="tag">Tracking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- گالری تصاویر -->
+        <section class="gallery">
+            <h2 class="section-title">گالری تصاویر</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="عکاسی مراسم" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تدوین" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1485178575877-1a13bf489dfe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="عروسی" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مراسم" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="هلی شات" class="gallery-img">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم" class="gallery-img">
+                </div>
+            </div>
+        </section>
+        
+        <!-- بخش خدمات -->
+        <section class="services" id="services">
+            <h2 class="section-title">خدمات ما</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3>فیلمبرداری مراسم</h3>
+                    <p>فیلمبرداری حرفه‌ای با چندین دوربین و زوایای مختلف برای پوشش کامل مراسم شما با کیفیت 4K و HDR</p>
                 </div>
                 
                 <div class="service-card">
@@ -192,7 +903,7 @@
                         <i class="fas fa-drone-alt"></i>
                     </div>
                     <h3>فیلمبرداری هوایی</h3>
-                    <p>تصویربرداری هوایی با پهپادهای حرفه‌ای و مجهز به دوربین‌های 4K</p>
+                    <p>تصویربرداری هوایی با پهپادهای حرفه‌ای DJI مجهز به دوربین‌های 6K و سیستم‌های تثبیت کننده پیشرفته</p>
                 </div>
                 
                 <div class="service-card">
@@ -200,7 +911,7 @@
                         <i class="fas fa-film"></i>
                     </div>
                     <h3>تدوین فیلم</h3>
-                    <p>تدوین حرفه‌ای با افکت‌های سینمایی و صداگذاری با کیفیت</p>
+                    <p>تدوین حرفه‌ای با افکت‌های سینمایی، اصلاح رنگ پیشرفته و صداگذاری با کیفیت استودیویی</p>
                 </div>
                 
                 <div class="service-card">
@@ -208,79 +919,136 @@
                         <i class="fas fa-ad"></i>
                     </div>
                     <h3>تهیه تیزر</h3>
-                    <p>ساخت تیزرهای جذاب برای انتشار در فضای مجازی</p>
+                    <p>ساخت تیزرهای جذاب و ویرایش شده برای انتشار در فضای مجازی با موسیقی و افکت‌های ویژه</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-photo-video"></i>
+                    </div>
+                    <h3>پست پروداکشن</h3>
+                    <p>پردازش نهایی فیلم شامل اصلاح رنگ، افزودن جلوه‌های ویژه و زیرنویس‌گذاری حرفه‌ای</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+        <!-- بخش ربات نوبت دهی -->
+        <section class="booking" id="booking">
+            <h2 class="section-title">سیستم رزرو آنلاین</h2>
+            <div class="booking-container">
+                <div class="booking-image"></div>
+                <div class="booking-form">
+                    <h2>فرم رزرو زمان</h2>
+                    <form id="bookingForm">
+                        <div class="form-group">
+                            <label for="booking-name">نام کامل</label>
+                            <input type="text" id="booking-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-phone">شماره تماس</label>
+                            <input type="tel" id="booking-phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-date">تاریخ مد نظر</label>
+                            <input type="date" id="booking-date" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-service">نوع خدمات</label>
+                            <select id="booking-service" required>
+                                <option value="" disabled selected>انتخاب کنید</option>
+                                <option value="فیلمبرداری مراسم">فیلمبرداری مراسم</option>
+                                <option value="فیلمبرداری هوایی">فیلمبرداری هوایی</option>
+                                <option value="تدوین فیلم">تدوین فیلم</option>
+                                <option value="پکیج کامل">پکیج کامل</option>
+                                <option value="مشاوره">مشاوره</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="booking-message">توضیحات اضافه (اختیاری)</label>
+                            <textarea id="booking-message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">ثبت درخواست</button>
+                    </form>
+                    
+                    <div class="booking-bot">
+                        <div class="bot-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="bot-message">
+                            ربات نوبت‌دهی ما به صورت هوشمند بهترین زمان‌ها را پیشنهاد می‌دهد. پس از ثبت درخواست، هماهنگی‌های لازم با شما انجام خواهد شد.
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
         
         <!-- بخش درباره من -->
-        <section class="about">
+        <section class="about" id="about">
             <div class="about-container">
                 <div class="about-img">
                     <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مهران تدوین">
                 </div>
                 <div class="about-content">
-                    <h2>درباره من</h2>
-                    <p>من مهران تدوین، فیلمبردار و تدوینگر حرفه‌ای با بیش از 10 سال سابقه در زمینه فیلمبرداری و تدوین مراسمات هستم. تخصص اصلی من در زمینه فیلمبرداری مراسم عروسی و مجالس است که با خلاقیت و دقت بالا انجام می‌دهم.</p>
-                    <p>با استفاده از تجهیزات به روز و تکنیک‌های مدرن فیلمبرداری، لحظات ناب مراسم شما را به زیباترین شکل ممکن ثبت می‌کنم. تدوین آثار من با نرم‌افزارهای حرفه‌ای مانند Adobe Premiere و After Effects انجام می‌شود.</p>
-                    <p>برای مشاهده نمونه کارهای بیشتر می‌توانید پیج اینستاگرام من را دنبال کنید:</p>
-                    <a href="https://instagram.com/mehran_tadvin" class="instagram-btn" target="_blank">
-                        <i class="fab fa-instagram"></i> پیج اینستاگرام
-                    </a>
+                    <h2>مهران تدوین</h2>
+                    <p>با بیش از 12 سال تجربه در زمینه فیلمبرداری و تدوین مراسمات، افتخار دارم که لحظات خاص شما را به زیباترین شکل ممکن ثبت کنم. تخصص اصلی من در فیلمبرداری مراسم عروسی و مجالس است که با ترکیب تکنولوژی روز و خلاقیت شخصی، آثاری ماندگار خلق می‌کنم.</p>
+                    <p>با استفاده از تجهیزات به روز شامل دوربین‌های Sony FX6 و Canon C70، و پهپادهای حرفه‌ای DJI، کیفیت کار من همیشه در بالاترین سطح ممکن قرار دارد. تدوین آثار با نرم‌افزارهای Premiere Pro، DaVinci Resolve و After Effects انجام می‌شود.</p>
+                    <p>همچنین با بهره‌گیری از تکنولوژی هوش مصنوعی، خدمات نوینی مانند بهبود کیفیت فیلم‌های قدیمی، تولید خودکار تیزر و تدوین هوشمند را ارائه می‌دهم.</p>
+                    
+                    <div class="social-links">
+                        <a href="https://instagram.com/mehran_tadvin" class="social-link instagram" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/989923681294" class="social-link whatsapp" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </section>
-        
-        <!-- بخش تماس -->
-        <section class="contact" id="contact">
-            <h2 class="section-title">تماس با ما</h2>
-            <div class="contact-container">
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <label for="name">نام کامل</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">شماره تماس</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">نوع خدمات</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>انتخاب کنید</option>
-                            <option value="فیلمبرداری مراسم">فیلمبرداری مراسم</option>
-                            <option value="تدوین فیلم">تدوین فیلم</option>
-                            <option value="فیلمبرداری هوایی">فیلمبرداری هوایی</option>
-                            <option value="تولید کلیپ">تولید کلیپ</option>
-                            <option value="سایر خدمات">سایر خدمات</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">توضیحات پروژه</label>
-                        <textarea id="message" name="message"></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">ارسال درخواست</button>
-                </form>
             </div>
         </section>
     </main>
     
     <!-- فوتر -->
     <footer>
-        <p>استودیو فیلمبرداری و تدوین مهران</p>
-        <div class="social-links">
-            <a href="https://wa.me/989923681294" class="whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="https://instagram.com/mehran_tadvin" class="instagram" target="_blank">
+        <div class="footer-logo">
+            <i class="fas fa-video"></i>
+            مهران تدوین
+        </div>
+        
+        <div class="footer-links">
+            <a href="#portfolio">نمونه کارها</a>
+            <a href="#services">خدمات</a>
+            <a href="#booking">رزرو آنلاین</a>
+            <a href="#about">درباره من</a>
+            <a href="#">وبلاگ</a>
+            <a href="#">قیمت‌ها</a>
+            <a href="#">سوالات متداول</a>
+        </div>
+        
+        <div class="footer-social">
+            <a href="https://instagram.com/mehran_tadvin" class="social-link instagram" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
+            <a href="https://wa.me/989923681294" class="social-link whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="#" class="social-link" style="background: #1877f2;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="#" class="social-link" style="background: #1da1f2;">
+                <i class="fab fa-twitter"></i>
+            </a>
         </div>
-        <p>© تمامی حقوق محفوظ است - ۱۴۰۳</p>
+        
+        <div class="copyright">
+            © تمامی حقوق محفوظ است - استودیو فیلمبرداری و تدوین مهران - ۱۴۰۳
+        </div>
     </footer>
     
     <!-- دکمه شناور واتساپ -->
@@ -294,42 +1062,120 @@
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
         
+        // بررسی حالت ذخیره شده در localStorage
+        if(localStorage.getItem('darkMode') === 'enabled') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+        
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
             if(body.classList.contains('dark-mode')) {
                 themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('darkMode', 'enabled');
             } else {
                 themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', 'disabled');
             }
         });
 
         // فرم تماس
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
             e.preventDefault();
+            sendFormData(this, 'درخواست تماس');
+        });
+        
+        // فرم رزرو
+        document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            sendFormData(this, 'رزرو زمان');
+        });
+        
+        function sendFormData(form, subject) {
+            const formData = new FormData(form);
+            let whatsappMsg = `${subject}:\n\n`;
             
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            
-            let whatsappMsg = `درخواست جدید از سایت:\n\n`;
-            whatsappMsg += `👤 نام: ${name}\n`;
-            whatsappMsg += `📞 شماره: ${phone}\n`;
-            whatsappMsg += `🎬 خدمات: ${service}\n`;
-            
-            if(message) {
-                whatsappMsg += `📝 توضیحات: ${message}\n`;
+            for(let [key, value] of formData.entries()) {
+                whatsappMsg += `${getLabel(key)}: ${value}\n`;
             }
             
             const encodedMsg = encodeURIComponent(whatsappMsg);
             const whatsappUrl = `https://wa.me/989923681294?text=${encodedMsg}`;
             
             window.open(whatsappUrl, '_blank');
-            this.reset();
+            form.reset();
             alert('پیام شما آماده ارسال است. لطفاً در پنجره واتساپ ارسال را تأیید کنید.');
+        }
+        
+        function getLabel(fieldName) {
+            const labels = {
+                'booking-name': '👤 نام',
+                'booking-phone': '📞 شماره تماس',
+                'booking-date': '📅 تاریخ',
+                'booking-service': '🎬 خدمات',
+                'booking-message': '📝 توضیحات',
+                'name': '👤 نام',
+                'phone': '📞 شماره تماس',
+                'service': '🎬 خدمات',
+                'message': '📝 توضیحات'
+            };
+            
+            return labels[fieldName] || fieldName;
+        }
+        
+        // انیمیشن‌های اسکرول
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.portfolio-item, .service-card, .section-title');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if(elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // تنظیم اولیه برای انیمیشن‌ها
+        document.querySelectorAll('.portfolio-item, .service-card').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(50px)';
+            item.style.transition = 'all 0.8s ease';
         });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+        
+        // ربات گفتگوی ساده
+        const botMessage = document.querySelector('.bot-message');
+        if(botMessage) {
+            setTimeout(() => {
+                botMessage.innerHTML += '<br><br>برای دریافت پیشنهاد زمان‌های خالی همین حالا فرم را پر کنید.';
+            }, 3000);
+        }
+        
+        // شبیه‌سازی تولید خودکار تصاویر با هوش مصنوعی
+        const aiDemo = document.querySelector('.ai-demo');
+        if(aiDemo) {
+            const aiImages = [
+                'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
+                'https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
+            ];
+            
+            let currentAiImage = 0;
+            setInterval(() => {
+                currentAiImage = (currentAiImage + 1) % aiImages.length;
+                aiDemo.querySelector('img').src = aiImages[currentAiImage];
+                aiDemo.querySelector('img').style.opacity = '0';
+                setTimeout(() => {
+                    aiDemo.querySelector('img').style.opacity = '1';
+                }, 500);
+            }, 5000);
+        }
     </script>
 </body>
 </html>
-'''
