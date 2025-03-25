@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>استودیو فیلمبرداری مراسم | مهران تدوین</title>
-    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین مراسمات با کیفیت سینمایی و هوش مصنوعی">
+    <meta name="description" content="خدمات تخصصی فیلمبرداری و تدوین مراسمات با کیفیت سینمایی">
     <link href="https://fonts.googleapis.com/css2?family=Yekan+Bakh:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
@@ -18,7 +18,6 @@
             --card-bg: #ffffff;
             --whatsapp: #25D366;
             --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-            --ai-color: #6e48aa;
         }
 
         /* حالت دارک */
@@ -73,10 +72,12 @@
             font-size: 1.5rem;
         }
 
-        .theme-toggle {
+        /* منوی همبرگری */
+        .menu-toggle {
+            display: none;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--text-dark);
             cursor: pointer;
         }
@@ -148,15 +149,6 @@
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 193, 212, 0.4);
-        }
-        
-        .btn-ai {
-            background: var(--ai-color);
-            box-shadow: 0 5px 15px rgba(110, 72, 170, 0.4);
-        }
-        
-        .btn-ai:hover {
-            box-shadow: 0 10px 25px rgba(110, 72, 170, 0.6);
         }
 
         /* بخش نمونه کارها */
@@ -344,65 +336,6 @@
             line-height: 1.8;
         }
 
-        /* بخش هوش مصنوعی */
-        .ai-section {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            color: white;
-        }
-        
-        .ai-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .ai-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--primary);
-        }
-        
-        .ai-content p {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.9;
-        }
-        
-        .ai-features {
-            margin-top: 2rem;
-        }
-        
-        .ai-feature {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-        }
-        
-        .ai-feature i {
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin-left: 1rem;
-            margin-top: 0.3rem;
-        }
-        
-        .ai-demo {
-            position: relative;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        .ai-demo img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
         /* بخش ربات نوبت دهی */
         .booking {
             padding: 6rem 2rem;
@@ -502,30 +435,13 @@
         .about-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .about-img {
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            animation: fadeInLeft 1s;
-        }
-        
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
+            text-align: center;
         }
         
         .about-content h2 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
             color: var(--primary);
-            animation: fadeInRight 1s;
         }
         
         .about-content p {
@@ -533,10 +449,14 @@
             color: var(--text-dark);
             line-height: 1.9;
             font-size: 1.1rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .social-links {
             display: flex;
+            justify-content: center;
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -637,13 +557,46 @@
             animation: none;
         }
 
-        /* انیمیشن‌های سفارشی */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
+        /* منوی همبرگری برای موبایل */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+                z-index: 1001;
+            }
+            
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background-color: var(--secondary);
+                flex-direction: column;
+                padding: 6rem 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+                z-index: 1000;
+            }
+            
+            nav.active {
+                right: 0;
+            }
+            
+            nav a {
+                padding: 1rem;
+                border-radius: 0;
+                border-right: 3px solid transparent;
+            }
+            
+            nav a:hover {
+                border-right-color: var(--primary);
+                background: transparent;
+                color: var(--primary);
+            }
         }
-        
+
+        /* انیمیشن‌های سفارشی */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
@@ -651,21 +604,6 @@
         }
 
         /* رسپانسیو */
-        @media (max-width: 1200px) {
-            .ai-container,
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .ai-demo,
-            .about-img {
-                order: -1;
-                max-width: 600px;
-                margin: 0 auto;
-            }
-        }
-        
         @media (max-width: 992px) {
             .booking-container {
                 grid-template-columns: 1fr;
@@ -677,17 +615,6 @@
         }
         
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-            }
-            
-            nav {
-                margin-top: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -741,16 +668,20 @@
             <i class="fas fa-video"></i>
             مهران تدوین
         </div>
-        <nav>
+        
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <nav id="mainNav">
             <a href="#portfolio">نمونه کارها</a>
             <a href="#services">خدمات</a>
-            <a href="#ai">هوش مصنوعی</a>
             <a href="#booking">نوبت دهی</a>
             <a href="#about">درباره من</a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </nav>
-        <button class="theme-toggle" id="themeToggle">
-            <i class="fas fa-moon"></i>
-        </button>
     </header>
     
     <!-- بخش اصلی -->
@@ -761,7 +692,6 @@
             <p>ثبت خاطرات به یاد ماندنی با تکنولوژی روز و خلاقیت بی‌نظیر</p>
             <div>
                 <a href="#booking" class="btn">رزرو آنلاین</a>
-                <a href="#ai" class="btn btn-ai">پیش نمایش هوش مصنوعی</a>
             </div>
         </section>
         
@@ -810,48 +740,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- تیزر -->
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="تیزر مراسم" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3>تیزر مراسم</h3>
-                        <p>تهیه تیزرهای جذاب برای معرفی مراسم شما در فضای مجازی</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Teaser</span>
-                            <span class="tag">Social Media</span>
-                            <span class="tag">Short Clip</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- فیلمبرداری مراسم دوم -->
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3>فیلمبرداری مراسم</h3>
-                        <p>ثبت تمام لحظات مهم و احساسی مراسم شما با دقت و حساسیت</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Multi Camera</span>
-                            <span class="tag">Event</span>
-                            <span class="tag">Documentary</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- هلی شات دوم -->
-                <div class="portfolio-item">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی" class="portfolio-img">
-                    <div class="portfolio-content">
-                        <h3>هلی شات خلاقانه</h3>
-                        <p>نمایش زیبایی‌های مراسم شما از زوایای دید منحصر به فرد</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">FPV Drone</span>
-                            <span class="tag">Follow Shot</span>
-                            <span class="tag">Tracking</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
         
@@ -870,18 +758,6 @@
                 </div>
                 <div class="gallery-item">
                     <img src="https://images.unsplash.com/photo-1485178575877-1a13bf489dfe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="عروسی" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مراسم" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری هوایی" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="هلی شات" class="gallery-img">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="فیلمبرداری مراسم" class="gallery-img">
                 </div>
             </div>
         </section>
@@ -913,27 +789,9 @@
                     <h3>تدوین فیلم</h3>
                     <p>تدوین حرفه‌ای با افکت‌های سینمایی، اصلاح رنگ پیشرفته و صداگذاری با کیفیت استودیویی</p>
                 </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-ad"></i>
-                    </div>
-                    <h3>تهیه تیزر</h3>
-                    <p>ساخت تیزرهای جذاب و ویرایش شده برای انتشار در فضای مجازی با موسیقی و افکت‌های ویژه</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-photo-video"></i>
-                    </div>
-                    <h3>پست پروداکشن</h3>
-                    <p>پردازش نهایی فیلم شامل اصلاح رنگ، افزودن جلوه‌های ویژه و زیرنویس‌گذاری حرفه‌ای</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
+            </div>
+        </section>
+        
         <!-- بخش ربات نوبت دهی -->
         <section class="booking" id="booking">
             <h2 class="section-title">سیستم رزرو آنلاین</h2>
@@ -965,7 +823,6 @@
                                 <option value="فیلمبرداری هوایی">فیلمبرداری هوایی</option>
                                 <option value="تدوین فیلم">تدوین فیلم</option>
                                 <option value="پکیج کامل">پکیج کامل</option>
-                                <option value="مشاوره">مشاوره</option>
                             </select>
                         </div>
                         
@@ -982,7 +839,7 @@
                             <i class="fas fa-robot"></i>
                         </div>
                         <div class="bot-message">
-                            ربات نوبت‌دهی ما به صورت هوشمند بهترین زمان‌ها را پیشنهاد می‌دهد. پس از ثبت درخواست، هماهنگی‌های لازم با شما انجام خواهد شد.
+                            پس از ثبت درخواست، هماهنگی‌های لازم با شما انجام خواهد شد.
                         </div>
                     </div>
                 </div>
@@ -992,14 +849,10 @@
         <!-- بخش درباره من -->
         <section class="about" id="about">
             <div class="about-container">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="مهران تدوین">
-                </div>
                 <div class="about-content">
                     <h2>مهران تدوین</h2>
                     <p>با بیش از 12 سال تجربه در زمینه فیلمبرداری و تدوین مراسمات، افتخار دارم که لحظات خاص شما را به زیباترین شکل ممکن ثبت کنم. تخصص اصلی من در فیلمبرداری مراسم عروسی و مجالس است که با ترکیب تکنولوژی روز و خلاقیت شخصی، آثاری ماندگار خلق می‌کنم.</p>
                     <p>با استفاده از تجهیزات به روز شامل دوربین‌های Sony FX6 و Canon C70، و پهپادهای حرفه‌ای DJI، کیفیت کار من همیشه در بالاترین سطح ممکن قرار دارد. تدوین آثار با نرم‌افزارهای Premiere Pro، DaVinci Resolve و After Effects انجام می‌شود.</p>
-                    <p>همچنین با بهره‌گیری از تکنولوژی هوش مصنوعی، خدمات نوینی مانند بهبود کیفیت فیلم‌های قدیمی، تولید خودکار تیزر و تدوین هوشمند را ارائه می‌دهم.</p>
                     
                     <div class="social-links">
                         <a href="https://instagram.com/mehran_tadvin" class="social-link instagram" target="_blank">
@@ -1026,9 +879,6 @@
             <a href="#services">خدمات</a>
             <a href="#booking">رزرو آنلاین</a>
             <a href="#about">درباره من</a>
-            <a href="#">وبلاگ</a>
-            <a href="#">قیمت‌ها</a>
-            <a href="#">سوالات متداول</a>
         </div>
         
         <div class="footer-social">
@@ -1037,12 +887,6 @@
             </a>
             <a href="https://wa.me/989923681294" class="social-link whatsapp" target="_blank">
                 <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="#" class="social-link" style="background: #1877f2;">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link" style="background: #1da1f2;">
-                <i class="fab fa-twitter"></i>
             </a>
         </div>
         
@@ -1080,50 +924,53 @@
             }
         });
 
-        // فرم تماس
-        document.getElementById('contactForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            sendFormData(this, 'درخواست تماس');
-        });
+        // منوی همبرگری
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.getElementById('mainNav');
         
-        // فرم رزرو
-        document.getElementById('bookingForm')?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            sendFormData(this, 'رزرو زمان');
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.innerHTML = mainNav.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
-        
-        function sendFormData(form, subject) {
-            const formData = new FormData(form);
-            let whatsappMsg = `${subject}:\n\n`;
+
+        // بستن منو هنگام کلیک روی لینک‌ها
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // فرم رزرو با ارسال به واتساپ
+        document.getElementById('bookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            for(let [key, value] of formData.entries()) {
-                whatsappMsg += `${getLabel(key)}: ${value}\n`;
-            }
+            const name = document.getElementById('booking-name').value;
+            const phone = document.getElementById('booking-phone').value;
+            const date = document.getElementById('booking-date').value;
+            const service = document.getElementById('booking-service').value;
+            const message = document.getElementById('booking-message').value;
+            
+            const whatsappMsg = 
+                `📌 درخواست رزرو فیلمبرداری\n\n` +
+                `👤 نام: ${name}\n` +
+                `📞 تلفن: ${phone}\n` +
+                `📅 تاریخ: ${date}\n` +
+                `🎬 خدمات: ${service}\n` +
+                `📝 توضیحات: ${message || 'بدون توضیح'}`;
             
             const encodedMsg = encodeURIComponent(whatsappMsg);
             const whatsappUrl = `https://wa.me/989923681294?text=${encodedMsg}`;
             
             window.open(whatsappUrl, '_blank');
-            form.reset();
-            alert('پیام شما آماده ارسال است. لطفاً در پنجره واتساپ ارسال را تأیید کنید.');
-        }
-        
-        function getLabel(fieldName) {
-            const labels = {
-                'booking-name': '👤 نام',
-                'booking-phone': '📞 شماره تماس',
-                'booking-date': '📅 تاریخ',
-                'booking-service': '🎬 خدمات',
-                'booking-message': '📝 توضیحات',
-                'name': '👤 نام',
-                'phone': '📞 شماره تماس',
-                'service': '🎬 خدمات',
-                'message': '📝 توضیحات'
-            };
+            this.reset();
             
-            return labels[fieldName] || fieldName;
-        }
-        
+            // نمایش پیام موفقیت
+            alert('درخواست شما با موفقیت ثبت شد. لطفاً در پنجره واتساپ ارسال را تأیید کنید.');
+        });
+
         // انیمیشن‌های اسکرول
         const animateOnScroll = () => {
             const elements = document.querySelectorAll('.portfolio-item, .service-card, .section-title');
@@ -1148,34 +995,6 @@
         
         window.addEventListener('scroll', animateOnScroll);
         window.addEventListener('load', animateOnScroll);
-        
-        // ربات گفتگوی ساده
-        const botMessage = document.querySelector('.bot-message');
-        if(botMessage) {
-            setTimeout(() => {
-                botMessage.innerHTML += '<br><br>برای دریافت پیشنهاد زمان‌های خالی همین حالا فرم را پر کنید.';
-            }, 3000);
-        }
-        
-        // شبیه‌سازی تولید خودکار تصاویر با هوش مصنوعی
-        const aiDemo = document.querySelector('.ai-demo');
-        if(aiDemo) {
-            const aiImages = [
-                'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80',
-                'https://images.unsplash.com/photo-1639762681057-408e52192e55?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-            ];
-            
-            let currentAiImage = 0;
-            setInterval(() => {
-                currentAiImage = (currentAiImage + 1) % aiImages.length;
-                aiDemo.querySelector('img').src = aiImages[currentAiImage];
-                aiDemo.querySelector('img').style.opacity = '0';
-                setTimeout(() => {
-                    aiDemo.querySelector('img').style.opacity = '1';
-                }, 500);
-            }, 5000);
-        }
     </script>
 </body>
 </html>
